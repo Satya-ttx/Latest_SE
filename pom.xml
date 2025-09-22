@@ -10,6 +10,7 @@
  
     <dependencies>
         <!-- Servlet API -->
+	    
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -17,11 +18,31 @@
             <scope>provided</scope> 
         </dependency>         
     </dependencies>
-
+	<profiles>
+	    <profile>
+	        <id>dev</id>
+	        <properties>
+	            <db.url>jdbc:mysql://localhost/devdb</db.url>
+	        </properties>
+	    </profile>
+	    <profile>
+	        <id>prod</id>
+	        <properties>
+	            <db.url>jdbc:mysql://prodserver/proddb</db.url>
+	        </properties>
+	    </profile>
+	</profiles>
     <build>
+    	<plugins>
+		  <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <version>3.8.1</version>
+		  </plugin>
+		</plugins>
         <finalName>BookMetroTicket</finalName>
     </build>
 </project>
 
 
- 
+
